@@ -6,12 +6,16 @@ import DetalleSerie from './components/DetalleSerie'
 import Favoritos from './components/Favoritos'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+
+  function handleBuscar(texto) {
+    console.log('Buscando:', texto)
+  }
 
   return (
     <div className="App">
       <h1>TVMaze</h1>
-      <Buscador />
+      <Buscador onBuscar={handleBuscar}/>
       <ListaSeries />
       <DetalleSerie />
       <Favoritos />
