@@ -1,3 +1,129 @@
+/* ── GENERAL ── */
+.App {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* ── HEADER Y NAV ── */
+.header {
+  background-color: #1a1a2e;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  color: #e94560;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 2px solid #e94560;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.nav-btn.activo {
+  background-color: #e94560;
+}
+
+.nav-btn:hover {
+  background-color: #e94560;
+}
+
+/* ── CONTENEDOR PRINCIPAL ── */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* ── BUSCADOR ── */
+.buscador {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.buscador input {
+  width: 400px;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.buscador input:focus {
+  border-color: #e94560;
+}
+
+.buscador button {
+  padding: 12px 28px;
+  background-color: #e94560;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buscador button:hover {
+  background-color: #c73652;
+}
+
+/* ── GRID DE TARJETAS ── */
+.lista-series {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+/* ── TARJETA ── */
+.tarjeta-serie {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tarjeta-serie:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.tarjeta-serie img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+}
+
+.tarjeta-serie p {
+  padding: 10px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  color: #1a1a2e;
+}
+
+/* ── DETALLE DE LA SERIE ── */
 .overlay {
   position: fixed;
   top: 0;
@@ -13,9 +139,167 @@
 
 .contenido {
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 95%;
+  max-height: 85vh;
+  overflow-y: auto;
   position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #e94560;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.imagen img {
+  width: 190px;
+  min-width: 190px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  flex: 1;
+  gap: 8px;
+}
+
+.header-info h2 {
+  font-size: 1.8rem;
+  color: #1a1a2e;
+  margin-right: 40px;
+  margin-bottom: 4px;
+}
+
+.separador {
+  border: none;
+  border-top: 2px solid #e94560;
+  margin: 8px 0;
+}
+
+.header-info p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.btn-favorito {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+}
+
+.btn-favorito.activo {
+  background-color: #e94560;
+  color: white;
+}
+
+.descripcion {
+  text-align: left;
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+}
+
+.descripcion h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.descripcion div {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.mas-info {
+  text-align: left;
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mas-info h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.mas-info p {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* ── FAVORITOS ── */
+.favoritos h2 {
+  font-size: 1.4rem;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .buscador {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buscador input {
+    width: 100%;
+  }
+
+  .contenido {
+    flex-direction: column;
+    max-height: 90vh;
+  }
+
+  .contenido img {
+    width: 100%;
+    min-width: unset;
+    border-radius: 12px 12px 0 0;
+    max-height: 250px;
+  }
+
+  .lista-series {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
 }

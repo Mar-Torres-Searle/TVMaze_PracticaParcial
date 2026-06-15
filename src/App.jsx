@@ -56,7 +56,7 @@ function App() {
         <h1>TVMaze</h1>
         <nav className="nav">
           <button className={pestanaActiva === 'buscar' ? 'nav-btn activo' : 'nav-btn'} onClick={() => setPestanaActiva('buscar')}> Buscar</button>
-          <button className={pestanaActiva === 'favoritos' ? 'nav-btn activo' : 'nav-btn'}onClick={() => setPestanaActiva('favoritos')}> ❤️ Favoritos {favoritos.length > 0 && `(${favoritos.length})`}</button>
+          <button className={pestanaActiva === 'favoritos' ? 'nav-btn activo' : 'nav-btn'}onClick={() => setPestanaActiva('favoritos')}> Favoritos {favoritos.length > 0 && `(${favoritos.length})`}</button>
         </nav>
       </header>
       {pestanaActiva === 'buscar' && (
