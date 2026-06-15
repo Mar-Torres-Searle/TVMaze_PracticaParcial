@@ -1,7 +1,20 @@
-function ListaSeries() {
-    return (
-      <div>ListaSeries</div>
-    )
+import TarjetaSerie from './TarjetaSerie'
+
+function ListaSeries({ series }) {
+  if (series.length === 0) {
+    return null
   }
-  
-  export default ListaSeries
+
+  return (
+    <section className="lista-series">
+      {series.map((resultado) => (
+        <TarjetaSerie
+          key={resultado.show.id}
+          serie={resultado.show}
+        />
+      ))}
+    </section>
+  )
+}
+
+export default ListaSeries
