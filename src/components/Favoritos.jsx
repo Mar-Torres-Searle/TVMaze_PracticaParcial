@@ -7,7 +7,6 @@ function Favoritos({ favoritos, onSeleccionar }) {
     
     return (
         <section className="favoritos">
-            <h2>Mis favoritos</h2>
             <div className="lista-series">
             {favoritos.map((serie) => (
                 <TarjetaSerie

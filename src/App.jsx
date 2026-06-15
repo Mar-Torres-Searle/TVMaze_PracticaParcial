@@ -61,8 +61,19 @@ function App() {
       </header>
       {pestanaActiva === 'buscar' && (
         <main className="contenedor"> 
-          <Buscador onBuscar={handleBuscar} />
+          <div className="hero">
+            <h2>Descubre tu próxima serie favorita</h2>
+            <p>Busca entre miles de series y guarda tus favoritas</p>
+            <Buscador onBuscar={handleBuscar} />
+          </div>
+          {series.length > 0 && <h2 className="seccion-titulo">Resultados de búsqueda</h2>}
           <ListaSeries series={series} onSeleccionar={handleSeleccionar} />
+          {favoritos.length > 0 && (
+            <div className="favoritos-home">
+              <h2 className="seccion-titulo">Mis favoritos</h2>
+              <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} />
+            </div>
+          )}
         </main>
       )}
       {pestanaActiva === 'favoritos' && (
