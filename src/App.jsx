@@ -14,6 +14,11 @@ function App() {
     return guardados ? JSON.parse(guardados) : []
   })
 
+  const [busquedaFavoritos, setBusquedaFavoritos] = useState('')
+  const [generoSeleccionado, setGeneroSeleccionado] = useState('Todos')
+
+  const generos = ['Todos', ...new Set(favoritos.flatMap(s => s.genres))]
+
 
   function handleBuscar(texto) {
     console.log('Buscando:', texto)
@@ -52,6 +57,7 @@ function App() {
   console.log('Serie seleccionada:', serieSeleccionada)
   return (
     <div className="App">
+
       <header className="header">
         <h1>TVMaze</h1>
         <nav className="nav">
@@ -59,28 +65,63 @@ function App() {
           <button className={pestanaActiva === 'favoritos' ? 'nav-btn activo' : 'nav-btn'}onClick={() => setPestanaActiva('favoritos')}> Favoritos {favoritos.length > 0 && `(${favoritos.length})`}</button>
         </nav>
       </header>
+
       {pestanaActiva === 'buscar' && (
         <main className="contenedor"> 
+
           <div className="hero">
             <h2>Descubre tu próxima serie favorita</h2>
             <p>Busca entre miles de series y guarda tus favoritas</p>
             <Buscador onBuscar={handleBuscar} />
           </div>
+
           {series.length > 0 && <h2 className="seccion-titulo">Resultados de búsqueda</h2>}
+          
           <ListaSeries series={series} onSeleccionar={handleSeleccionar} />
+          
           {favoritos.length > 0 && (
             <div className="favoritos-home">
               <h2 className="seccion-titulo">Mis favoritos</h2>
               <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} />
             </div>
           )}
+
         </main>
       )}
+
       {pestanaActiva === 'favoritos' && (
         <main className="contenedor">
-          <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar}/>
+
+          <div className="hero">
+            <h2>Mis series favoritas</h2>
+            <p>Todas las series que has guardado en un solo lugar</p>
+            <input
+              type="text"
+              placeholder="Buscar en favoritos..."
+              value={busquedaFavoritos}
+              onChange={(e) => setBusquedaFavoritos(e.target.value)}
+              className="buscador-input"
+            />
+            <div className="generos-lista">
+              {generos.map(genero => (
+                <button
+                  key={genero}
+                  className={generoSeleccionado === genero ? 'genero-btn activo' : 'genero-btn'}
+                  onClick={() => setGeneroSeleccionado(genero)}
+                >
+                  {genero}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="contenedor">
+            <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} busqueda={busquedaFavoritos} generoSeleccionado={generoSeleccionado}/>
+          </div>
+
         </main>
       )}
+
       {serieSeleccionada && (
         <DetalleSerie
           serie={serieSeleccionada}
