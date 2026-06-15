@@ -1,4 +1,4 @@
-function DetalleSerie({ serie, onCerrar }) {
+function DetalleSerie({ serie, onCerrar, onFavorito, esFavorito }) {
     return (
       <div className="overlay" onClick={onCerrar}>
         <div className="contenido" onClick={(e) => e.stopPropagation()}>
@@ -12,11 +12,12 @@ function DetalleSerie({ serie, onCerrar }) {
             <p><strong>Género:</strong> {serie.genres.join(', ')}</p>
             <p><strong>Estado:</strong> {serie.status}</p>
             <p><strong>Estreno:</strong> {serie.premiered}</p>
-            {serie.rating.average && (
-              <p><strong>Rating:</strong> {serie.rating.average}</p>
-            )}
+            {serie.rating.average && (<p><strong>Rating:</strong> {serie.rating.average}</p>)}
             <div dangerouslySetInnerHTML={{ __html: serie.summary }} />
           </div>
+          <button className="favorito" onClick={() => onFavorito(serie)}>
+            {esFavorito ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+          </button>
         </div>
       </div>
     )
