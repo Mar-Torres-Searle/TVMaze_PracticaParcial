@@ -140,6 +140,7 @@
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 .tarjeta-serie:hover {
@@ -159,6 +160,29 @@
   font-weight: bold;
   text-align: center;
   color: #1a1a2e;
+}
+
+.btn-fav-rapido {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #e94560;
+  background-color: white;
+  color: #e94560;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-fav-rapido.activo {
+  background-color: #e94560;
+  color: white;
 }
 
 /* ── DETALLE DE LA SERIE ── */

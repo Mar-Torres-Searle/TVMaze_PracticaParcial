@@ -77,12 +77,12 @@ function App() {
 
           {series.length > 0 && <h2 className="seccion-titulo">Resultados de búsqueda</h2>}
           
-          <ListaSeries series={series} onSeleccionar={handleSeleccionar} />
+          <ListaSeries series={series} onSeleccionar={handleSeleccionar} onFavorito={handleFavorito} favoritos={favoritos}/>
           
           {favoritos.length > 0 && (
             <div className="favoritos-home">
               <h2 className="seccion-titulo">Mis favoritos</h2>
-              <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} />
+              <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} onFavorito={handleFavorito} />
             </div>
           )}
 
@@ -116,7 +116,7 @@ function App() {
           </div>
 
           <div className="contenedor">
-            <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} busqueda={busquedaFavoritos} generoSeleccionado={generoSeleccionado}/>
+            <Favoritos favoritos={favoritos} onSeleccionar={handleSeleccionar} onFavorito={handleFavorito} busqueda={busquedaFavoritos} generoSeleccionado={generoSeleccionado}/>
           </div>
 
         </main>

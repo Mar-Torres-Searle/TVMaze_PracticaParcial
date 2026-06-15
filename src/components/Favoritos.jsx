@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import TarjetaSerie from './TarjetaSerie'
 
-function Favoritos({ favoritos, onSeleccionar, busqueda = '', generoSeleccionado = 'Todos'  }) {
+function Favoritos({ favoritos, onSeleccionar, onFavorito, busqueda = '', generoSeleccionado = 'Todos'  }) {
 
 
-    if (favoritos.length === 0 && conFiltros) {
+    if (favoritos.length === 0) {
         return (
             <div className="favoritos-vacio">
               <span>🎬</span>
@@ -19,8 +19,6 @@ function Favoritos({ favoritos, onSeleccionar, busqueda = '', generoSeleccionado
         const coincideGenero = generoSeleccionado === 'Todos' || serie.genres.includes(generoSeleccionado)
         return coincideNombre && coincideGenero
     })
-
-    console.log('busqueda:', busqueda, 'genero:', generoSeleccionado)
     
     return (
         <section className="favoritos">
@@ -28,13 +26,15 @@ function Favoritos({ favoritos, onSeleccionar, busqueda = '', generoSeleccionado
                 <p className="sin-resultados">No hay series que coincidan con tu búsqueda</p>
             ) : (
                 <div className="lista-series">
-                {favoritosFiltrados.map((serie) => (
-                    <TarjetaSerie
-                    key={serie.id}
-                    serie={serie}
-                    onSeleccionar={onSeleccionar}
-                    />
-                ))}
+                    {favoritosFiltrados.map((serie) => (
+                        <TarjetaSerie
+                            key={serie.id}
+                            serie={serie}
+                            onSeleccionar={onSeleccionar}
+                            onFavorito={onFavorito}
+                            esFavorito={true}
+                        />
+                    ))}
                 </div>
             )}
         </section>
