@@ -1,6 +1,6 @@
 import TarjetaSerie from './TarjetaSerie'
 
-function ListaSeries({ series }) {
+function ListaSeries({ series, onSeleccionar }) {
   if (series.length === 0) {
     return null
   }
@@ -11,6 +11,7 @@ function ListaSeries({ series }) {
         <TarjetaSerie
           key={resultado.show.id}
           serie={resultado.show}
+          onSeleccionar={onSeleccionar}
         />
       ))}
     </section>
