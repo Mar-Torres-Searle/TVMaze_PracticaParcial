@@ -45,8 +45,7 @@
 
 /* ── CONTENEDOR PRINCIPAL ── */
 .contenedor {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   padding: 32px 24px;
 }
 
@@ -169,55 +168,60 @@
   justify-content: center;
 }
 
-.imagen {
+.info-importante {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   align-items: stretch;
 }
 
-.imagen img {
-  width: 190px;
-  min-width: 190px;
+.image-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 160px;
+}
+
+.image-container img {
+  width: 160px;
+  min-width: 160px;
   border-radius: 8px;
   object-fit: cover;
+  flex: 1;
 }
 
 .header-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 8px;
   text-align: left;
   flex: 1;
-  gap: 8px;
 }
 
 .header-info h2 {
   font-size: 1.8rem;
   color: #1a1a2e;
   margin-right: 40px;
-  margin-bottom: 4px;
-}
-
-.separador {
-  border: none;
-  border-top: 2px solid #e94560;
-  margin: 8px 0;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #e94560;
+  display: inline-block;
 }
 
 .header-info p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #444;
 }
 
 .btn-favorito {
-  padding: 10px 20px;
+  width: 160px;
+  padding: 10px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   background-color: #f0f0f0;
   transition: background-color 0.2s;
-  align-self: flex-start;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .btn-favorito.activo {
@@ -233,6 +237,7 @@
 
 .descripcion h3 {
   font-size: 1rem;
+  font-weight: bold;
   color: #1a1a2e;
   margin-bottom: 8px;
 }
@@ -243,24 +248,52 @@
   line-height: 1.6;
 }
 
-.mas-info {
-  text-align: left;
+.cast {
   border-top: 1px solid #eee;
   padding-top: 16px;
+  text-align: left;
+}
+
+.cast h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.cast-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.cast-list-item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  gap: 4px;
 }
 
-.mas-info h3 {
-  font-size: 1rem;
+.cast-list-item img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cast-list-item-name {
+  font-size: 0.75rem;
+  font-weight: bold;
   color: #1a1a2e;
-  margin-bottom: 4px;
+  text-align: center;
 }
 
-.mas-info p {
-  font-size: 0.9rem;
-  color: #444;
+.cast-list-item-character {
+  font-size: 0.7rem;
+  color: #888;
+  text-align: center;
 }
 
 /* ── FAVORITOS ── */
