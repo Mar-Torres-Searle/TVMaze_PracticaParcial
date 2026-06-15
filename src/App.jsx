@@ -21,7 +21,6 @@ function App() {
 
 
   function handleBuscar(texto) {
-    console.log('Buscando:', texto)
     fetch(`https://api.tvmaze.com/search/shows?q=${texto}`)
       .then(res => res.json())
       .then(data => setSeries(data))
@@ -29,7 +28,6 @@ function App() {
   }
   
   function handleSeleccionar(id) {
-    console.log('Seleccionando:', id)
     fetch(`https://api.tvmaze.com/shows/${id}`)
       .then(res => res.json())
       .then(data => setSerieSeleccionada(data))
@@ -54,7 +52,6 @@ function App() {
 
   const [pestanaActiva, setPestanaActiva] = useState('buscar')
 
-  console.log('Serie seleccionada:', serieSeleccionada)
   return (
     <div className="App">
 
